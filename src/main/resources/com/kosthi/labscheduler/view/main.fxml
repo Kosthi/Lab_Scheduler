@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="1440.0" prefWidth="720.0"
+      style="-fx-font-size: 14px; -fx-background-color: transparent;" stylesheets="@css/style.css"
+      xmlns="http://javafx.com/javafx/19"
+      fx:controller="com.kosthi.labscheduler.controller.MainController">
+    <HBox alignment="CENTER" maxWidth="888.0"
+          style="-fx-background-color: #fff6; -fx-background-radius: 11; -fx-padding: 11;">
+        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString="" graphicTextGap="0.0"
+                   maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="50.0"
+                   rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <graphic>
+                <FontIcon iconLiteral="mdral-keyboard_arrow_left" iconSize="24" selectionEnd="0" selectionStart="0"/>
+            </graphic>
+            <HBox.margin>
+                <Insets right="4.0"/>
+            </HBox.margin>
+        </MFXButton>
+        <MFXTextField fx:id="searchKey" floatingText="关键词" floatingTextGap="0.0" graphicTextGap="0.0"
+                      maxWidth="1.7976931348623157E308" prefColumnCount="4" styleClass="custom-text-field"
+                      textLimit="42" HBox.hgrow="ALWAYS"/>
+        <MFXComboBox fx:id="searchWeek" floatingText="周" floatingTextGap="0.0" graphicTextGap="0.0"
+                     maxHeight="1.7976931348623157E308" styleClass="custom-text-field">
+            <HBox.margin>
+                <Insets left="4.0" right="2.0"/>
+            </HBox.margin>
+        </MFXComboBox>
+        <MFXComboBox fx:id="searchSchool" floatingText="学院" floatingTextGap="0.0" graphicTextGap="0.0"
+                     prefWidth="180" maxHeight="1.7976931348623157E308" styleClass="custom-text-field">
+            <HBox.margin>
+                <Insets left="2.0" right="4.0"/>
+            </HBox.margin>
+        </MFXComboBox>
+        <MFXComboBox fx:id="searchLab" floatingText="机房" floatingTextGap="0.0" graphicTextGap="0.0"
+                     prefWidth="100" maxHeight="1.7976931348623157E308" styleClass="custom-text-field">
+            <!--            <HBox.margin>-->
+            <!--                <Insets left="2.0" right="4.0"/>-->
+            <!--            </HBox.margin>-->
+        </MFXComboBox>
+        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString=""
+                   maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="66.0"
+                   rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <HBox.margin>
+                <Insets left="4.0"/>
+            </HBox.margin>
+            <graphic>
+                <FontIcon iconLiteral="mdomz-search" iconSize="24" selectionEnd="0" selectionStart="0"/>
+            </graphic>
+        </MFXButton>
+    </HBox>
+    <MFXProgressBar fx:id="loadingBar" maxWidth="888.0" minHeight="-Infinity" prefHeight="4.0"/>
+
+    <GridPane style="-fx-background-color: white; -fx-pref-width: 907px; -fx-pref-height: 553px; -fx-alignment: center;"
+              AnchorPane.leftAnchor="250" AnchorPane.topAnchor="130">
+        <!--        &lt;!&ndash; 设置边距 &ndash;&gt;-->
+        <!--        <padding>-->
+        <!--            <Insets top="10" right="20" bottom="30" left="40"/>-->
+        <!--        </padding>-->
+        <!-- 第一行标签 -->
+        <Label styleClass="custom-label1"
+               GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="mon" styleClass="custom-label2"
+               text="星期一 [12月25日]" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label fx:id="tue" styleClass="custom-label2" text="星期二 [12月25日]" GridPane.columnIndex="2"
+               GridPane.rowIndex="0"/>
+        <Label fx:id="wed" styleClass="custom-label2" text="星期三 [12月25日]" GridPane.columnIndex="3"
+               GridPane.rowIndex="0"/>
+        <Label fx:id="thu" styleClass="custom-label2" text="星期四 [12月25日]" GridPane.columnIndex="4"
+               GridPane.rowIndex="0"/>
+        <Label fx:id="fri" styleClass="custom-label2" text="星期五 [12月25日]" GridPane.columnIndex="5"
+               GridPane.rowIndex="0"/>
+        <Label fx:id="sat" styleClass="custom-label2" text="星期六 [12月25日]" GridPane.columnIndex="6"
+               GridPane.rowIndex="0"/>
+        <Label fx:id="sun" styleClass="custom-label2" text="星期日 [12月25日]" GridPane.columnIndex="7"
+               GridPane.rowIndex="0"/>
+
+        <!-- 第二行标签 -->
+        <Label styleClass="custom-label3" text="1-2节" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="l1_12" styleClass="custom-label4"
+               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label fx:id="l2_12" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Label fx:id="l3_12" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+        <Label fx:id="l4_12" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+        <Label fx:id="l5_12" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+        <Label fx:id="l6_12" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
+        <Label fx:id="l7_12" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="1"/>
+
+        <!-- 第三行标签 -->
+        <Label styleClass="custom-label3" text="3-4节" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="l1_34" styleClass="custom-label4"
+               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Label fx:id="l2_34" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <Label fx:id="l3_34" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+        <Label fx:id="l4_34" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+        <Label fx:id="l5_34" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+        <Label fx:id="l6_34" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+        <Label fx:id="l7_34" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="2"/>
+
+        <!-- 第四行标签 -->
+        <Label styleClass="custom-label3" text="5-6节" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label fx:id="l1_56" styleClass="custom-label4"
+               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <Label fx:id="l2_56" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        <Label fx:id="l3_56" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+        <Label fx:id="l4_56" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+        <Label fx:id="l5_56" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="3"/>
+        <Label fx:id="l6_56" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="3"/>
+        <Label fx:id="l7_56" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="3"/>
+
+        <!-- 第五行标签 -->
+        <Label styleClass="custom-label3" text="7-8节" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Label fx:id="l1_78" styleClass="custom-label4"
+               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+               GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <Label fx:id="l2_78" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+        <Label fx:id="l3_78" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+        <Label fx:id="l4_78" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+        <Label fx:id="l5_78" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="4"/>
+        <Label fx:id="l6_78" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="4"/>
+        <Label fx:id="l7_78" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="4"/>
+
+        <!-- 第六行标签 -->
+        <Label styleClass="custom-label3" text="9-10节" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Label fx:id="l1_910" styleClass="custom-label4"
+               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+               GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        <Label fx:id="l2_910" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+        <Label fx:id="l3_910" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+        <Label fx:id="l4_910" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+        <Label fx:id="l5_910" styleClass="custom-label4"
+               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+               GridPane.columnIndex="5" GridPane.rowIndex="5"/>
+        <Label fx:id="l6_910" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="5"/>
+        <Label fx:id="l7_910" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="5"/>
+    </GridPane>
+</VBox>
