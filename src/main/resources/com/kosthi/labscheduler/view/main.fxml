@@ -46,7 +46,7 @@
             <!--                <Insets left="2.0" right="4.0"/>-->
             <!--            </HBox.margin>-->
         </MFXComboBox>
-        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString=""
+        <MFXButton fx:id="searchButton" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString=""
                    maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="66.0"
                    rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">
             <font>
@@ -72,80 +72,74 @@
         <Label styleClass="custom-label1"
                GridPane.columnIndex="0" GridPane.rowIndex="0"/>
         <Label fx:id="mon" styleClass="custom-label2"
-               text="星期一 [12月25日]" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <Label fx:id="tue" styleClass="custom-label2" text="星期二 [12月25日]" GridPane.columnIndex="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label fx:id="tue" styleClass="custom-label2" GridPane.columnIndex="2"
                GridPane.rowIndex="0"/>
-        <Label fx:id="wed" styleClass="custom-label2" text="星期三 [12月25日]" GridPane.columnIndex="3"
+        <Label fx:id="wed" styleClass="custom-label2" GridPane.columnIndex="3"
                GridPane.rowIndex="0"/>
-        <Label fx:id="thu" styleClass="custom-label2" text="星期四 [12月25日]" GridPane.columnIndex="4"
+        <Label fx:id="thu" styleClass="custom-label2" GridPane.columnIndex="4"
                GridPane.rowIndex="0"/>
-        <Label fx:id="fri" styleClass="custom-label2" text="星期五 [12月25日]" GridPane.columnIndex="5"
+        <Label fx:id="fri" styleClass="custom-label2" GridPane.columnIndex="5"
                GridPane.rowIndex="0"/>
-        <Label fx:id="sat" styleClass="custom-label2" text="星期六 [12月25日]" GridPane.columnIndex="6"
+        <Label fx:id="sat" styleClass="custom-label2" GridPane.columnIndex="6"
                GridPane.rowIndex="0"/>
-        <Label fx:id="sun" styleClass="custom-label2" text="星期日 [12月25日]" GridPane.columnIndex="7"
+        <Label fx:id="sun" styleClass="custom-label2" GridPane.columnIndex="7"
                GridPane.rowIndex="0"/>
 
         <!-- 第二行标签 -->
         <Label styleClass="custom-label3" text="1-2节" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <Label fx:id="l1_12" styleClass="custom-label4"
-               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+        <Label fx:id="l1_1" styleClass="custom-label4"
                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <Label fx:id="l2_12" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-        <Label fx:id="l3_12" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-        <Label fx:id="l4_12" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
-        <Label fx:id="l5_12" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
-        <Label fx:id="l6_12" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
-        <Label fx:id="l7_12" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="1"/>
+        <Label fx:id="l2_1" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Label fx:id="l3_1" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+        <Label fx:id="l4_1" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+        <Label fx:id="l5_1" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+        <Label fx:id="l6_1" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
+        <Label fx:id="l7_1" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="1"/>
 
         <!-- 第三行标签 -->
         <Label styleClass="custom-label3" text="3-4节" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <Label fx:id="l1_34" styleClass="custom-label4"
-               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+        <Label fx:id="l1_2" styleClass="custom-label4"
                GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-        <Label fx:id="l2_34" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-        <Label fx:id="l3_34" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-        <Label fx:id="l4_34" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="2"/>
-        <Label fx:id="l5_34" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
-        <Label fx:id="l6_34" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
-        <Label fx:id="l7_34" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="2"/>
+        <Label fx:id="l2_2" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <Label fx:id="l3_2" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+        <Label fx:id="l4_2" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+        <Label fx:id="l5_2" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+        <Label fx:id="l6_2" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+        <Label fx:id="l7_2" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="2"/>
 
         <!-- 第四行标签 -->
         <Label styleClass="custom-label3" text="5-6节" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-        <Label fx:id="l1_56" styleClass="custom-label4"
-               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+        <Label fx:id="l1_3" styleClass="custom-label4"
                GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-        <Label fx:id="l2_56" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-        <Label fx:id="l3_56" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-        <Label fx:id="l4_56" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="3"/>
-        <Label fx:id="l5_56" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="3"/>
-        <Label fx:id="l6_56" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="3"/>
-        <Label fx:id="l7_56" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="3"/>
+        <Label fx:id="l2_3" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        <Label fx:id="l3_3" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+        <Label fx:id="l4_3" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+        <Label fx:id="l5_3" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="3"/>
+        <Label fx:id="l6_3" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="3"/>
+        <Label fx:id="l7_3" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="3"/>
 
         <!-- 第五行标签 -->
         <Label styleClass="custom-label3" text="7-8节" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-        <Label fx:id="l1_78" styleClass="custom-label4"
-               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+        <Label fx:id="l1_4" styleClass="custom-label4"
                GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-        <Label fx:id="l2_78" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-        <Label fx:id="l3_78" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
-        <Label fx:id="l4_78" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="4"/>
-        <Label fx:id="l5_78" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="4"/>
-        <Label fx:id="l6_78" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="4"/>
-        <Label fx:id="l7_78" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="4"/>
+        <Label fx:id="l2_4" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+        <Label fx:id="l3_4" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+        <Label fx:id="l4_4" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+        <Label fx:id="l5_4" styleClass="custom-label4" GridPane.columnIndex="5" GridPane.rowIndex="4"/>
+        <Label fx:id="l6_4" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="4"/>
+        <Label fx:id="l7_4" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="4"/>
 
         <!-- 第六行标签 -->
         <Label styleClass="custom-label3" text="9-10节" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-        <Label fx:id="l1_910" styleClass="custom-label4"
-               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+        <Label fx:id="l1_5" styleClass="custom-label4"
                GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-        <Label fx:id="l2_910" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-        <Label fx:id="l3_910" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
-        <Label fx:id="l4_910" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="5"/>
-        <Label fx:id="l5_910" styleClass="custom-label4"
-               text="教师:张俊&#10;课程:神经网络技术智能科学[1701]&#10;备注:工业智能21级单片机课程设计" wrapText="true"
+        <Label fx:id="l2_5" styleClass="custom-label4" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+        <Label fx:id="l3_5" styleClass="custom-label4" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+        <Label fx:id="l4_5" styleClass="custom-label4" GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+        <Label fx:id="l5_5" styleClass="custom-label4"
                GridPane.columnIndex="5" GridPane.rowIndex="5"/>
-        <Label fx:id="l6_910" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="5"/>
-        <Label fx:id="l7_910" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="5"/>
+        <Label fx:id="l6_5" styleClass="custom-label4" GridPane.columnIndex="6" GridPane.rowIndex="5"/>
+        <Label fx:id="l7_5" styleClass="custom-label4" GridPane.columnIndex="7" GridPane.rowIndex="5"/>
     </GridPane>
 </VBox>
