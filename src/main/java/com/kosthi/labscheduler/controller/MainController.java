@@ -1,6 +1,11 @@
 package com.kosthi.labscheduler.controller;
 
+import com.kosthi.labscheduler.mode.Calendar;
 import com.kosthi.labscheduler.mode.HttpRequest;
+import com.kosthi.labscheduler.mode.Teacher;
+import com.kosthi.labscheduler.view.ViewFactory;
+import com.kosthi.labscheduler.view.ViewType;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
@@ -8,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -17,18 +24,22 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class MainController implements Initializable {
+    private static Map<String, Label> labelMap;
     @FXML
     MFXTextField searchKey;
-
     @FXML
+    @Getter
     MFXComboBox<String> searchWeek;
-
     @FXML
+    @Getter
     MFXComboBox<String> searchSchool;
-
     @FXML
+    @Getter
     MFXComboBox<String> searchLab;
     List<String> dateList = new ArrayList<>(140);
+    private boolean isLogin = false;
+    @FXML
+    private MFXButton logoutButton;
     @FXML
     private Label mon;
     @FXML
@@ -119,17 +130,120 @@ public class MainController implements Initializable {
     @FXML
     private Label l7_5;
 
-    private Map<String, Label> labelMap;
+    @FXML
+    private Label welcomeLabel;
 
     @FXML
     private Button searchButton;
 
+    @FXML
+    private Button loginButton;
+
     private Map<String, List<String>> schoolLabsMap;
+
+    @Setter
+    private Teacher teacher;
+
+    @Getter
+    private Calendar calendar;
+
+    private void setLabelClickAble() {
+        for (int i = 1; i <= 7; ++i) {
+            for (int j = 1; j <= 5; ++j) {
+                String key = String.valueOf(i) + '-' + j;
+                if (labelMap.get(key).getText().isEmpty() || labelMap.get(key).getText().contains(teacher.getTeacherName())) {
+                    labelMap.get(key).setOnMouseClicked(e -> {
+                        ScheduleController scheduleController = (ScheduleController) ViewFactory.getController(ViewType.SCHEDULE);
+                        // System.out.println(key.charAt(0) + " " + key.charAt(2));
+                        scheduleController.setWeekDay(key.charAt(0));
+                        scheduleController.setSession(key.charAt(2));
+                        scheduleController.setVisible(!labelMap.get(key).getText().contains(teacher.getTeacherName()) || labelMap.get(key).getText().contains("可排课"));
+                        ViewFactory.show(ViewType.SCHEDULE);
+                    });
+                }
+            }
+        }
+    }
+
+    private void setTips() {
+        for (int i = 1; i <= 7; ++i) {
+            for (int j = 1; j <= 5; ++j) {
+                String key = String.valueOf(i) + '-' + j;
+                if (labelMap.get(key).getText().isEmpty()) {
+                    labelMap.get(key).setText("可排课");
+                    labelMap.get(key).setStyle("-fx-text-fill: red");
+                }
+            }
+        }
+    }
+
+    public void switchToLogin() {
+        isLogin = true;
+        loginButton.setVisible(false);
+        logoutButton.setVisible(true);
+        refresh();
+        welcomeLabel.setText(teacher.getSchoolName() + " " + teacher.getTeacherName() + " " + "老师 你好！");
+    }
+
+    public void refresh() {
+        clearLabelsText();
+        search();
+        if (isLogin) {
+            setLabelClickAble();
+            setTips();
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        logoutButton.setVisible(false);
+        logoutButton.setOnMouseClicked(e -> {
+            HttpRequest.logout(teacher.getAccount());
+            logoutButton.setVisible(false);
+            welcomeLabel.setText("");
+            loginButton.setVisible(true);
+            isLogin = false;
+            refresh();
+        });
+
+        buildLabMap();
+
+        loginButton.setOnMouseClicked(e -> ViewFactory.show(ViewType.LOGIN));
+
+        // 更新周时间信息
+        calendar = HttpRequest.getCalendar();
+        getNext20Weeks(LocalDate.parse(calendar.getStartDate().toString()));
+
+        schoolLabsMap = HttpRequest.getSchoolLabs();
+        // System.out.println(schoolLabsMap);
+
+        initSearchInput();
+
+        searchWeek.valueProperty().addListener((observable, oldValue, newValue) -> {
+            // 这里处理选项改变的事件
+            List<String> week = getCurrentWeek(Integer.parseInt(newValue));
+
+            mon.setText(week.get(0));
+            tue.setText(week.get(1));
+            wed.setText(week.get(2));
+            thu.setText(week.get(3));
+            fri.setText(week.get(4));
+            sat.setText(week.get(5));
+            sun.setText(week.get(5));
+        });
+
+        // 检索排课信息
+        search();
+    }
 
     void initSearchInput() { //初始化搜索栏和多选框
         searchButton.setOnMouseClicked(e -> {
             clearLabelsText();
             search();
+            if (isLogin) {
+                setLabelClickAble();
+                setTips();
+            }
         });
 
         List<String> list = new ArrayList<>(20);
@@ -148,13 +262,6 @@ public class MainController implements Initializable {
         searchLab.getItems().addAll(schoolLabsMap.get(searchSchool.getSelectedItem()));
         searchLab.selectFirst();
 
-        // 添加 ChangeListener
-//        searchSchool.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            searchLab.getItems().clear();
-//            searchLab.getItems().addAll(schoolLabsMap.get(newValue));
-//            searchLab.selectFirst();
-//        });
-
         searchSchool.setOnAction(e -> {
             searchLab.getItems().clear();
             searchLab.getItems().addAll(schoolLabsMap.get(searchSchool.getSelectedItem()));
@@ -164,53 +271,10 @@ public class MainController implements Initializable {
         searchSchool.setScrollOnOpen(true);
         searchLab.setScrollOnOpen(true);
 
-        l3_1.setText("教师:于霞\n" +
-                "课程:数据库与软件工程课程设计\n" +
-                "计算机科学与技术[1103]\n" +
-                "备注:2101-2102");
-
         setWrapText();
-
-//        searchType.setItems(FXCollections.observableList(Arrays.stream(Music.Type.values()).toList()));
-//        searchPlatform.selectFirst();
-//        searchType.selectFirst();
-//        searchTableModel.searchKeyProperty().bindBidirectional(searchKey.textProperty());
-//        searchTableModel.searchPlatformProperty().bindBidirectional(searchPlatform.valueProperty());
-//        searchTableModel.searchTypeProperty().bindBidirectional(searchType.valueProperty());
-    }
-
-    void initLoadingBar() { //初始化加载条
-        // loadingBar.visibleProperty().bind(searchTableModel.loadingProperty());
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        buildLabMap();
-
-        getNext20Weeks(HttpRequest.getStartDate());
-        schoolLabsMap = HttpRequest.getSchoolLabs();
-        // System.out.println(schoolLabsMap);
-
-        initSearchInput();
-        initLoadingBar();
-
-        searchWeek.valueProperty().addListener((observable, oldValue, newValue) -> {
-            // 这里处理选项改变的事件
-            List<String> week = getCurrentWeek(Integer.parseInt(newValue));
-
-            mon.setText(week.get(0));
-            tue.setText(week.get(1));
-            wed.setText(week.get(2));
-            thu.setText(week.get(3));
-            fri.setText(week.get(4));
-            sat.setText(week.get(5));
-            sun.setText(week.get(5));
-        });
     }
 
     private void getNext20Weeks(LocalDate startDate) {
-//        dateList = new ArrayList<>(140);
-
         // 创建格式化器
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M月d日");
 
@@ -304,6 +368,9 @@ public class MainController implements Initializable {
             for (int j = 1; j <= 5; ++j) {
                 String key = String.valueOf(i) + '-' + j;
                 labelMap.get(key).setText("");
+                labelMap.get(key).setStyle("");
+                labelMap.get(key).setOnMouseClicked(e -> {
+                });
             }
         }
     }

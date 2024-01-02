@@ -14,14 +14,13 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 1440, 900);
+//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("view/login.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load());
 //        stage.setTitle("Hello!");
 //        stage.setScene(scene);
 //
 //        stage.show();
 
-        ViewFactory.setStage(stage);
         ViewFactory.show(ViewType.MAIN);
 
 //        GridPane gridPane = new GridPane();

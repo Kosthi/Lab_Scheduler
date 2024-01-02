@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
@@ -10,8 +10,38 @@
       style="-fx-font-size: 14px; -fx-background-color: transparent;" stylesheets="@css/style.css"
       xmlns="http://javafx.com/javafx/19"
       fx:controller="com.kosthi.labscheduler.controller.MainController">
+    <MFXButton fx:id="loginButton" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString=""
+               maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="66.0"
+               rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">
+        <font>
+            <Font size="20.0"/>
+        </font>
+        <HBox.margin>
+            <Insets left="4.0"/>
+        </HBox.margin>
+        <graphic>
+            <FontIcon iconLiteral="mdmz-supervisor_account" iconSize="24" selectionEnd="0" selectionStart="0"/>
+        </graphic>
+    </MFXButton>
+    <MFXButton fx:id="logoutButton" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString=""
+               maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="66.0"
+               rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">
+        <font>
+            <Font size="20.0"/>
+        </font>
+        <HBox.margin>
+            <Insets left="4.0"/>
+        </HBox.margin>
+        <graphic>
+            <FontIcon iconLiteral="mdal-exit_to_app" iconSize="24" selectionEnd="0" selectionStart="0"/>
+        </graphic>
+    </MFXButton>
     <HBox alignment="CENTER" maxWidth="888.0"
           style="-fx-background-color: #fff6; -fx-background-radius: 11; -fx-padding: 11;">
+        <padding>
+            <Insets left="4.0"/>
+        </padding>
+        <Label fx:id="welcomeLabel"/>
         <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString="" graphicTextGap="0.0"
                    maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="50.0"
                    rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">
@@ -60,7 +90,7 @@
             </graphic>
         </MFXButton>
     </HBox>
-    <MFXProgressBar fx:id="loadingBar" maxWidth="888.0" minHeight="-Infinity" prefHeight="4.0"/>
+    <!--    <MFXProgressBar fx:id="loadingBar" maxWidth="888.0" minHeight="-Infinity" prefHeight="4.0"/>-->
 
     <GridPane style="-fx-background-color: white; -fx-pref-width: 907px; -fx-pref-height: 553px; -fx-alignment: center;"
               AnchorPane.leftAnchor="250" AnchorPane.topAnchor="130">

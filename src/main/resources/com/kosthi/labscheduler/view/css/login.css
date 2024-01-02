@@ -1,0 +1,58 @@
+#account, #password {
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: rgb(200, 200, 200);
+}
+
+#account {
+    -fx-background-image: url("../image/account.png");
+    -fx-background-size: 19px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px;
+}
+
+#password {
+    -fx-background-image: url("../image/password.png");
+    -fx-background-size: 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 2px;
+}
+
+#account:hover, #password:hover {
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: rgb(160, 160, 160);
+}
+
+#account:focused, #password:focused {
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: rgb(160, 160, 160);
+}
+
+#loginButton {
+    -fx-background-color: deepskyblue;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+
+#loginButton:hover {
+    -fx-background-color: aqua;
+    -fx-cursor: hand;
+}
+
+#loginButton:pressed {
+    -fx-background-color: darkturquoise;
+    -fx-cursor: hand;
+}
+
+#Login {
+    -fx-background-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-border-color: rgb(180, 180, 180);
+    -fx-background-color: white;
+}

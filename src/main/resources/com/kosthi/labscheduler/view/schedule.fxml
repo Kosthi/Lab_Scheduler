@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19"
+      fx:controller="com.kosthi.labscheduler.controller.ScheduleController" alignment="CENTER" maxWidth="888.0"
+      style="-fx-background-color: #fff6; -fx-background-radius: 11; -fx-padding: 11;">
+    <!--    <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString="" graphicTextGap="0.0"-->
+    <!--               maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="50.0"-->
+    <!--               rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">-->
+    <!--        <font>-->
+    <!--            <Font size="20.0"/>-->
+    <!--        </font>-->
+    <!--        <graphic>-->
+    <!--            <FontIcon iconLiteral="mdral-keyboard_arrow_left" iconSize="24" selectionEnd="0" selectionStart="0"/>-->
+    <!--        </graphic>-->
+    <!--        <HBox.margin>-->
+    <!--            <Insets right="4.0"/>-->
+    <!--        </HBox.margin>-->
+    <!--    </MFXButton>-->
+    <MFXComboBox fx:id="searchSchool" floatingText="学院" floatingTextGap="0.0" graphicTextGap="0.0"
+                 maxHeight="1.7976931348623157E308" styleClass="custom-text-field">
+        <HBox.margin>
+            <Insets left="4.0" right="2.0"/>
+        </HBox.margin>
+    </MFXComboBox>
+    <MFXComboBox fx:id="searchMajor" floatingText="专业" floatingTextGap="0.0" graphicTextGap="0.0"
+                 prefWidth="180" maxHeight="1.7976931348623157E308" styleClass="custom-text-field">
+        <HBox.margin>
+            <Insets left="2.0" right="4.0"/>
+        </HBox.margin>
+    </MFXComboBox>
+    <MFXComboBox fx:id="searchCourse" floatingText="课程" floatingTextGap="0.0" graphicTextGap="0.0"
+                 prefWidth="100" maxHeight="1.7976931348623157E308" styleClass="custom-text-field">
+        <!--            <HBox.margin>-->
+        <!--                <Insets left="2.0" right="4.0"/>-->
+        <!--            </HBox.margin>-->
+    </MFXComboBox>
+    <MFXComboBox fx:id="searchClass1" floatingText="班级1" floatingTextGap="0.0" graphicTextGap="0.0"
+                 prefWidth="100" maxHeight="1.7976931348623157E308" styleClass="custom-text-field">
+        <!--            <HBox.margin>-->
+        <!--                <Insets left="2.0" right="4.0"/>-->
+        <!--            </HBox.margin>-->
+    </MFXComboBox>
+    <MFXComboBox fx:id="searchClass2" floatingText="班级2" floatingTextGap="0.0" graphicTextGap="0.0"
+                 prefWidth="100" maxHeight="1.7976931348623157E308" styleClass="custom-text-field">
+        <!--            <HBox.margin>-->
+        <!--                <Insets left="2.0" right="4.0"/>-->
+        <!--            </HBox.margin>-->
+    </MFXComboBox>
+    <MFXTextField fx:id="note" floatingText="备注" floatingTextGap="0.0" graphicTextGap="0.0"
+                  maxWidth="1.7976931348623157E308" prefColumnCount="4" styleClass="custom-text-field"
+                  textLimit="42" HBox.hgrow="ALWAYS"/>
+    <MFXButton fx:id="scheduleButton" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString=""
+               maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="66.0"
+               rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">
+        <font>
+            <Font size="20.0"/>
+        </font>
+        <HBox.margin>
+            <Insets left="4.0"/>
+        </HBox.margin>
+        <graphic>
+            <FontIcon iconLiteral="mdal-grid_on" iconSize="24" selectionEnd="0" selectionStart="0"/>
+        </graphic>
+    </MFXButton>
+    <MFXButton fx:id="cancelScheduleButton" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" ellipsisString=""
+               maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="66.0"
+               rippleBackgroundOpacity="0.42" rippleColor="#c2f3ff" styleClass="custom-button" textFill="#00abd6">
+        <font>
+            <Font size="20.0"/>
+        </font>
+        <HBox.margin>
+            <Insets left="4.0"/>
+        </HBox.margin>
+        <graphic>
+            <FontIcon iconLiteral="mdal-grid_off" iconSize="24" selectionEnd="0" selectionStart="0"/>
+        </graphic>
+    </MFXButton>
+</HBox>
